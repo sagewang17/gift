@@ -1,0 +1,64 @@
+:root { --pink:#f9dfe8; --deep-pink:#d96686; --soft-pink:#ed9fb5; --ink:#4a4850; --blue:#5c8eb9; --card:#fff9fb; }
+* { box-sizing:border-box; }
+html,body { margin:0; min-height:100%; }
+body { font-family: "Avenir Next", "PingFang SC", "Microsoft YaHei", sans-serif; font-weight:700; color:var(--ink); background:#f9dfe8; overflow:hidden; }
+button { font:inherit; -webkit-tap-highlight-color:transparent; }
+.app { position:relative; width:100%; min-height:100svh; overflow:hidden; background:radial-gradient(circle at 50% 15%, #fff5f7 0, #f9dfe8 46%, #f5d4df 100%); }
+.screen { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:clamp(22px,5vh,52px) 24px max(24px, env(safe-area-inset-bottom)); opacity:0; pointer-events:none; transform:scale(.985); transition:opacity .5s ease, transform .5s ease; }
+.screen.is-active { opacity:1; pointer-events:auto; transform:scale(1); }
+.ambient { position:absolute; border-radius:50%; filter:blur(2px); opacity:.46; pointer-events:none; }
+.ambient-a { width:190px; height:190px; left:-100px; top:10%; background:#f4b7c8; }
+.ambient-b { width:240px; height:240px; right:-140px; bottom:5%; background:#f7c5d4; }
+.top-note { position:relative; margin-bottom:clamp(10px,2vh,22px); font-size:12px; letter-spacing:.12em; color:#9c6d7b; }
+.cat-wrap { position:relative; width:min(62vw,245px); height:min(38vh,265px); min-height:205px; display:grid; place-items:end center; }
+.cat { width:100%; height:100%; overflow:visible; filter:drop-shadow(0 11px 7px rgba(114,74,87,.13)); transform-origin:50% 100%; animation:float 3.2s ease-in-out infinite; }
+.cat-shadow { position:absolute; bottom:9px; width:44%; height:16px; background:rgba(125,82,101,.13); border-radius:50%; filter:blur(4px); }
+.cat-wrap.worried .cat { animation:shake .36s ease-in-out 2; }
+.cat-wrap.sad .cat { transform:rotate(-2deg) translateY(3px); }
+.cat-wrap.pleading .cat { animation:bounce .7s ease-in-out infinite alternate; }
+.cat-wrap.happy .cat { animation:happy .7s ease-in-out 3; }
+.cat-wrap.surprised .cat { animation:surprise .8s ease-in-out 2; }
+.cat-wrap.sad .cat-eyes { transform:translateY(3px) scaleY(.86); transform-origin:center; }
+.cat-wrap.sad .brow-left { transform:rotate(18deg) translate(2px,8px); transform-origin:110px 90px; }
+.cat-wrap.sad .brow-right { transform:rotate(-18deg) translate(-2px,8px); transform-origin:150px 90px; }
+.cat-wrap.pleading .cat-eyes { transform:scale(1.14); transform-origin:center; }
+.cat-wrap.pleading .heart-mark { transform:translateY(-7px) scale(1.16); transform-origin:center; }
+.cat-wrap.worried .face-sweat { opacity:1; }
+h1 { position:relative; margin:0; color:#4a4850; font-size:clamp(21px,6vw,29px); line-height:1.45; font-weight:700; text-align:center; letter-spacing:.03em; }
+.reaction { min-height:20px; position:relative; margin:8px 0 12px; color:#a87584; font-size:13px; text-align:center; }
+.choice-area { position:relative; display:flex; align-items:center; justify-content:center; gap:clamp(24px,8vw,42px); min-height:82px; width:100%; z-index:3; }
+.choice-area.centered .yes-choice { margin-inline:auto; }
+.choice { border:0; border-radius:14px; cursor:pointer; box-shadow:0 7px 15px rgba(133,72,95,.12); transition:transform .45s cubic-bezier(.2,.9,.2,1), width .45s ease, height .45s ease, background .25s ease; }
+.yes-choice { width:132px; max-width:calc(100% - 156px); height:56px; flex:0 1 auto; color:white; background:linear-gradient(135deg,#dc7691,#ca587b); font-size:18px; font-weight:700; line-height:1; }
+.yes-choice:active { transform:scale(.96); }
+.no-choice { width:132px; height:56px; flex:0 0 132px; color:white; background:#5d91bd; font-size:18px; font-weight:700; line-height:1; white-space:nowrap; overflow:hidden; }
+.no-choice:active { transform:scale(.94); }
+.no-choice.vanish { opacity:0; pointer-events:none; }
+.choice:focus-visible, .gift-box-button:focus-visible, .restart-button:focus-visible { outline:3px solid rgba(92,142,185,.4); outline-offset:4px; }
+.gift-screen { background:radial-gradient(circle at 50% 30%, #fff5f8, var(--pink) 68%); }
+.happy-cat-wrap { position:relative; width:190px; height:175px; margin-bottom:-18px; }
+.happy-cat { width:100%; height:100%; overflow:visible; transform:translateY(-24px) scale(.82); transform-origin:50% 100%; }
+.mini-hearts { position:absolute; left:0; right:0; top:8px; color:#de7391; font-size:13px; letter-spacing:.2em; text-align:center; animation:twinkle 1.2s ease-in-out infinite alternate; }
+.gift-screen h2 { margin:0 0 14px; font-size:25px; color:#4b4851; }
+.gift-box-button { position:relative; width:170px; height:155px; margin-top:0; border:0; background:none; cursor:pointer; transition:transform .25s ease; }
+.gift-box-button:hover { transform:translateY(-5px) rotate(-1deg); }
+.gift-box-button:active { transform:scale(.95); }
+.gift-box-body { position:absolute; width:118px; height:82px; left:26px; bottom:20px; border-radius:8px 8px 13px 13px; background:linear-gradient(135deg,#ef93aa,#d65f81); box-shadow:0 11px 17px rgba(155,76,103,.22); }
+.gift-lid { position:absolute; z-index:2; width:134px; height:28px; left:18px; bottom:91px; border-radius:9px; background:linear-gradient(135deg,#f3a2b6,#dc6c8a); box-shadow:0 6px 9px rgba(155,76,103,.18); transform-origin:12% 90%; transition:transform .8s cubic-bezier(.2,.8,.2,1), bottom .8s ease; }
+.gift-ribbon-v { position:absolute; z-index:3; width:18px; height:83px; left:76px; bottom:20px; background:#ffe3a8; }
+.gift-ribbon-h { position:absolute; z-index:4; width:120px; height:14px; left:25px; bottom:52px; border-radius:4px; background:#ffe3a8; }
+.gift-bow { position:absolute; z-index:5; width:30px; height:25px; bottom:106px; background:#ffe3a8; border-radius:80% 20% 80% 20%; }
+.bow-left { left:58px; transform:rotate(28deg); }.bow-right { right:56px; transform:rotate(62deg) scaleX(-1); }
+.gift-box-button.opened .gift-lid { bottom:125px; transform:rotate(-28deg) translate(-15px,-8px); }
+.gift-box-button.opened .gift-bow { transform:translateY(-20px) rotate(28deg); opacity:0; transition:all .5s ease; }
+.gift-box-button.opened .bow-right { transform:translateY(-20px) rotate(62deg) scaleX(-1); }
+.surprise-screen { background:radial-gradient(circle at 50% 30%,#fff8fa,#f6d8e2 75%); }
+.surprise-card { position:relative; width:min(88vw,370px); padding:30px 24px 24px; border:1px solid rgba(211,121,146,.2); border-radius:27px; text-align:center; background:rgba(255,250,252,.87); box-shadow:0 20px 45px rgba(145,75,99,.15); }
+.card-sparkle { position:absolute; top:12px; right:21px; color:#e89bb0; font-size:22px; animation:twinkle 1s infinite alternate; }
+.surprise-card h2 { margin:0 0 18px; color:#c85476; font-size:24px; }
+.gift-video { width:100%; aspect-ratio:16/9; border-radius:16px; object-fit:cover; }
+.gift-video { background:#332832; }
+.restart-button { margin-top:18px; border:0; border-radius:999px; padding:9px 20px; color:#bd607c; background:#fbe5ec; cursor:pointer; font-size:12px; }
+.confetti { position:absolute; inset:0; pointer-events:none; overflow:hidden; }.confetti i { position:absolute; top:-10px; width:8px; height:12px; border-radius:2px; animation:fall var(--d) linear forwards; transform:rotate(var(--r)); background:var(--c); }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} } @keyframes shake {0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}} @keyframes bounce {to{transform:translateY(-8px)}} @keyframes happy {0%{transform:translateY(0) rotate(-2deg)}100%{transform:translateY(-9px) rotate(2deg)}} @keyframes surprise {0%,100%{transform:scale(1)}50%{transform:scale(1.09)}} @keyframes twinkle {to{opacity:.35;transform:scale(1.08)}} @keyframes pulse {50%{opacity:.55}} @keyframes fall {to{top:110%;transform:translateX(var(--x)) rotate(560deg);opacity:.1}}
+@media (max-height:700px) { .screen{padding-top:15px}.cat-wrap{height:190px;min-height:165px}.reaction{margin-bottom:8px}.happy-cat-wrap{height:130px;margin-bottom:-12px}.gift-box-button{height:132px;margin-top:0}.gift-lid{bottom:78px}.gift-bow{bottom:93px}.gift-box-body{bottom:15px}.gift-ribbon-v{bottom:15px}.gift-ribbon-h{bottom:47px} }

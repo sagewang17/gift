@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f9dfe8" />
+  <title>给你的一封小小告白</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app" id="app">
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+    <div class="petals" id="petals" aria-hidden="true"></div>
+
+    <section class="screen question-screen is-active" id="questionScreen" aria-labelledby="questionText">
+      <div class="cat-wrap" id="catWrap" aria-label="一只深灰色的小猫">
+        <div class="cat-shadow"></div>
+        <svg class="cat" id="catSvg" viewBox="0 0 260 270" role="img" aria-label="小猫插画">
+          <g class="cat-tail"><path d="M203 226 C252 229 250 178 222 176" fill="none" stroke="#5f626c" stroke-width="17" stroke-linecap="round"/><path d="M203 226 C252 229 250 178 222 176" fill="none" stroke="#858893" stroke-width="5" stroke-linecap="round" opacity=".45"/></g>
+          <ellipse cx="130" cy="205" rx="73" ry="58" fill="#676a74"/>
+          <ellipse cx="130" cy="225" rx="42" ry="35" fill="#9a9ba1" opacity=".7"/>
+          <path d="M88 177 C62 145 56 106 69 65 L102 88 C118 81 142 81 158 88 L192 65 C204 106 198 145 172 177 Z" fill="#555861"/>
+          <path d="M72 69 L101 91 L83 112 Z" fill="#c08f8e" opacity=".72"/>
+          <path d="M188 69 L159 91 L177 112 Z" fill="#c08f8e" opacity=".72"/>
+          <path d="M85 105 C92 77 111 62 130 62 C149 62 168 77 175 105 C182 135 164 164 130 169 C96 164 78 135 85 105Z" fill="#777a83"/>
+          <path d="M93 108 C103 91 117 82 130 82 C143 82 157 91 167 108" fill="none" stroke="#a5a6ab" stroke-width="5" opacity=".6"/>
+          <g class="cat-eyes"><ellipse cx="110" cy="116" rx="15" ry="19" fill="#d7a85c"/><ellipse cx="150" cy="116" rx="15" ry="19" fill="#d7a85c"/><ellipse cx="110" cy="118" rx="4" ry="13" fill="#33343a"/><ellipse cx="150" cy="118" rx="4" ry="13" fill="#33343a"/><circle cx="105" cy="109" r="4" fill="white" opacity=".9"/><circle cx="145" cy="109" r="4" fill="white" opacity=".9"/></g>
+          <path class="brow-left" d="M96 91 Q110 84 121 91" fill="none" stroke="#45474f" stroke-width="5" stroke-linecap="round"/>
+          <path class="brow-right" d="M139 91 Q151 84 164 91" fill="none" stroke="#45474f" stroke-width="5" stroke-linecap="round"/>
+          <path d="M123 135 Q130 129 137 135 L130 142 Z" fill="#4b3c43"/>
+          <path class="cat-mouth" d="M130 142 Q124 148 119 145 M130 142 Q136 148 141 145" fill="none" stroke="#4b3c43" stroke-width="3" stroke-linecap="round"/>
+          <g class="whiskers" fill="none" stroke="#dad8da" stroke-width="2" stroke-linecap="round" opacity=".75"><path d="M106 139 L62 131"/><path d="M106 146 L57 147"/><path d="M154 139 L198 131"/><path d="M154 146 L203 147"/></g>
+          <g class="paws"><ellipse cx="98" cy="201" rx="18" ry="28" fill="#777a83" transform="rotate(18 98 201)"/><ellipse cx="162" cy="201" rx="18" ry="28" fill="#777a83" transform="rotate(-18 162 201)"/></g>
+          <g class="face-sweat" opacity="0"><path d="M185 100 Q198 117 185 130 Q172 117 185 100Z" fill="#8bc9df"/><path d="M73 115 Q81 126 73 135 Q65 126 73 115Z" fill="#8bc9df"/></g>
+          <g class="heart-mark"><path d="M130 42 C119 28 96 40 102 57 C108 72 130 82 130 82 C130 82 152 72 158 57 C164 40 141 28 130 42Z" fill="#df6f8e"/></g>
+        </svg>
+      </div>
+
+      <h1 id="questionText">可以让我做你的女朋友吗？</h1>
+      <p class="reaction" id="reaction" aria-live="polite"></p>
+
+      <div class="choice-area" id="choiceArea">
+        <button class="choice yes-choice" id="yesButton" type="button">可以</button>
+        <button class="choice no-choice" id="noButton" type="button">不可以</button>
+      </div>
+    </section>
+
+    <section class="screen gift-screen" id="giftScreen" aria-hidden="true">
+      <div class="happy-cat-wrap">
+        <svg class="happy-cat" viewBox="0 0 260 210" aria-label="开心的小猫"><use href="#catSvg"></use></svg>
+        <div class="mini-hearts">♡　♥　♡</div>
+      </div>
+      <button class="gift-box-button" id="giftBoxButton" type="button" aria-label="打开礼物盒">
+        <span class="gift-lid"></span><span class="gift-box-body"></span><span class="gift-ribbon-v"></span><span class="gift-ribbon-h"></span><span class="gift-bow bow-left"></span><span class="gift-bow bow-right"></span>
+      </button>
+    </section>
+
+    <section class="screen surprise-screen" id="surpriseScreen" aria-hidden="true">
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
+      <div class="surprise-card">
+        <div class="card-sparkle">✦</div>
+        <video id="giftVideo" class="gift-video" controls playsinline preload="metadata">
+          <source src="assets/song.mp4" type="video/mp4" />
+        </video>
+        <button class="restart-button" id="restartButton" type="button">再看一次</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
